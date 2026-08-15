@@ -1,4 +1,5 @@
 import '../scss/style.scss';
+import { createPortfolioDataMap } from './portfolio-data.js';
 
 
 gsap.registerPlugin(ScrollTrigger,ScrollSmoother,ScrollToPlugin)
@@ -394,48 +395,205 @@ document.addEventListener("DOMContentLoaded", function () {
   
     console.log('modalElement:', modalElement);
     console.log('closedButton:', closedButton);
+
+    // モーダル開閉中のスクロール位置（閉じ直後の謎ジャンプ防止）
+    let savedScrollPosition = 0;
+    let isModalScrollLocked = false;
+    const MODAL_SMOOTH_DEFAULT = 1.5;
+
+    function finishSmootherScrub(smoother) {
+      const st = smoother.scrollTrigger;
+      if (!st || typeof st.getTween !== 'function') return;
+      const tween = st.getTween();
+      if (tween) {
+        // スクラブ追従を即完了（上から戻るアニメを殺す）
+        tween.progress(1);
+        tween.pause();
+      }
+    }
+
+    function pinSmootherTo(smoother, y) {
+      smoother.scrollTop(y);
+      const content = typeof smoother.content === 'function' ? smoother.content() : null;
+      if (content) {
+        // 見た目の transform も同じ位置へ強制（smooth の遅れを消す）
+        gsap.set(content, { y: -y });
+      }
+      finishSmootherScrub(smoother);
+    }
+
+    function lockBackgroundScroll() {
+      if (!isModalScrollLocked) return;
+      const smoother = ScrollSmoother.get();
+      if (smoother) {
+        pinSmootherTo(smoother, savedScrollPosition);
+      } else if (window.scrollY !== savedScrollPosition) {
+        window.scrollTo(0, savedScrollPosition);
+      }
+    }
+
+    function preventBackgroundWheel(e) {
+      if (!isModalScrollLocked) return;
+      e.preventDefault();
+    }
+
+    function stopTouchPropagate(e) {
+      e.stopPropagation();
+    }
+
+    function startModalScrollLock() {
+      isModalScrollLocked = true;
+      gsap.ticker.add(lockBackgroundScroll);
+      document.addEventListener('wheel', preventBackgroundWheel, { passive: false });
+      if (modalElement) {
+        modalElement.addEventListener('touchmove', stopTouchPropagate, { passive: true });
+      }
+    }
+
+    function stopModalScrollLock() {
+      isModalScrollLocked = false;
+      gsap.ticker.remove(lockBackgroundScroll);
+      document.removeEventListener('wheel', preventBackgroundWheel);
+      if (modalElement) {
+        modalElement.removeEventListener('touchmove', stopTouchPropagate);
+      }
+    }
+
+    function restoreScrollPosition() {
+      const smoother = ScrollSmoother.get();
+      if (!smoother) {
+        document.body.style.overflow = '';
+        window.scrollTo(0, savedScrollPosition);
+        return;
+      }
+
+      // smooth=0 のまま見た目も位置も固定してから overflow 解除
+      if (typeof smoother.smooth === 'function') {
+        smoother.smooth(0);
+      }
+      pinSmootherTo(smoother, savedScrollPosition);
+      document.body.style.overflow = '';
+      pinSmootherTo(smoother, savedScrollPosition);
+
+      let frames = 0;
+      const holdPosition = () => {
+        pinSmootherTo(smoother, savedScrollPosition);
+        frames += 1;
+        if (frames < 12) {
+          requestAnimationFrame(holdPosition);
+          return;
+        }
+
+        // smooth を戻した直後にスクラブが走るので、即座に完了させてジャンプを潰す
+        if (typeof smoother.smooth === 'function') {
+          smoother.smooth(MODAL_SMOOTH_DEFAULT);
+        }
+        pinSmootherTo(smoother, savedScrollPosition);
+        finishSmootherScrub(smoother);
+
+        requestAnimationFrame(() => {
+          pinSmootherTo(smoother, savedScrollPosition);
+          finishSmootherScrub(smoother);
+          requestAnimationFrame(() => {
+            pinSmootherTo(smoother, savedScrollPosition);
+            finishSmootherScrub(smoother);
+          });
+        });
+      };
+      requestAnimationFrame(holdPosition);
+    }
+
+    // Swiper を初回モーダルオープン時だけ読み込む
+    let swiperAssetsPromise = null;
+    function loadSwiperAssets() {
+      if (typeof Swiper !== 'undefined') {
+        return Promise.resolve();
+      }
+      if (swiperAssetsPromise) {
+        return swiperAssetsPromise;
+      }
+
+      const cssUrl = (typeof wpData !== 'undefined' && wpData.swiperCss)
+        ? wpData.swiperCss
+        : '/wp-content/themes/portfolio/css/swiper-bundle.css';
+      const jsUrl = (typeof wpData !== 'undefined' && wpData.swiperJs)
+        ? wpData.swiperJs
+        : '/wp-content/themes/portfolio/js/swiper-bundle.min.js';
+
+      swiperAssetsPromise = new Promise((resolve, reject) => {
+        if (!document.querySelector('link[data-swiper-css]')) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = cssUrl;
+          link.setAttribute('data-swiper-css', 'true');
+          document.head.appendChild(link);
+        }
+
+        const script = document.createElement('script');
+        script.src = jsUrl;
+        script.async = true;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('Swiper の読み込みに失敗しました'));
+        document.body.appendChild(script);
+      });
+
+      return swiperAssetsPromise;
+    }
   
-    // モーダルデータ
-    const portfolioDataList = [
-      // hamburger (data-index="0")
-      [
-        {
-          img: 'http://portfolio.local/wp-content/uploads/2025/06/hamburger.webp',
-          title: 'Hamburger(架空)',
-        },
-        {
-          img: 'http://portfolio.local/wp-content/uploads/2025/06/hamburger-description.webp',
-          title: 'Hamburger(架空)の詳細',
-        },
-      ],
-      // portfolio (data-index="1")
-      [
-        {
-          img: 'http://portfolio.local/wp-content/uploads/2025/06/portfolio.webp',
-          title: 'Portfolio',
-        },
-        {
-          img: 'http://portfolio.local/wp-content/uploads/2025/06/portfolio-description.webp',
-          title: 'Portfolioの詳細',
-        },
-      ],
-    ];
+    // モーダルデータ（中身は src/portfolio-data.js）
+    const themeUri = (typeof wpData !== 'undefined' && wpData.themeUri)
+      ? wpData.themeUri
+      : '/wp-content/themes/portfolio/';
+    const portfolioDataMap = createPortfolioDataMap(themeUri);
+
+    function getWorksKeyFromImg(img) {
+      const src = img.currentSrc || img.getAttribute('src') || '';
+      const file = src.split('/').pop().split('?')[0];
+      return file
+        .replace(/\.[^.]+$/, '')
+        .replace(/-\d+x\d+$/, '')
+        .replace(/-scaled$/, '');
+    }
   
     // =================================
     // モーダルを開く処理
     // =================================
-    function openModal(startIndex) {
-      console.log('モーダルを開く処理開始:', startIndex);
+    async function openModal(worksKey) {
+      console.log('モーダルを開く処理開始:', worksKey);
       
-      // データが存在するかチェック
-      if (!portfolioDataList[startIndex]) {
-        console.error('指定されたインデックスのデータが存在しません:', startIndex);
+      const portfolioData = portfolioDataMap[worksKey];
+      if (!portfolioData) {
+        console.error('指定されたキーのデータが存在しません:', worksKey);
+        return;
+      }
+
+      try {
+        await loadSwiperAssets();
+      } catch (error) {
+        console.error(error);
         return;
       }
   
-      // ScrollSmootherを停止
+      // 見た目の位置を保存し、smooth を切って transform ごと固定する
       const smoother = ScrollSmoother.get();
-      if (smoother) smoother.paused(true);
+      if (smoother) {
+        const content = typeof smoother.content === 'function' ? smoother.content() : null;
+        const visualY = content ? gsap.getProperty(content, 'y') : 0;
+        // smooth の遅れ分も含め、画面に見えている位置を保存
+        savedScrollPosition = typeof visualY === 'number' ? -visualY : smoother.scrollTop();
+        if (typeof smoother.smooth === 'function') {
+          smoother.smooth(0);
+        }
+        pinSmootherTo(smoother, savedScrollPosition);
+      } else {
+        savedScrollPosition = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${savedScrollPosition}px`;
+        document.body.style.left = '0';
+        document.body.style.width = '100%';
+      }
+      document.body.style.overflow = 'hidden';
+      startModalScrollLock();
   
       // スライドコンテンツを作成
       const wrapper = document.querySelector('.swiper-wrapper');
@@ -446,7 +604,6 @@ document.addEventListener("DOMContentLoaded", function () {
       
       wrapper.innerHTML = ''; // 前回分をクリア
   
-      const portfolioData = portfolioDataList[startIndex];
       portfolioData.forEach(data => {
         const slide = document.createElement('div');
         slide.classList.add('swiper-slide');
@@ -464,16 +621,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   
       // モーダルを表示
-      modalElement.classList.remove('is-close'); // is-closeクラスを削除
+      modalElement.classList.remove('is-close');
       modalElement.classList.add('is-open');
-      document.body.style.overflow = 'hidden'; // スクロール無効化
   
       // Swiperを初期化（少し遅延させる）
+      // トラックパッドは横スワイプ(deltaX)のみ反応。縦慣性で戻るのを防ぐ
       setTimeout(() => {
         swiperInstance = new Swiper(".swiper", {
           loop: false,
           initialSlide: 0,
-          mousewheel: true,
           pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -483,13 +639,18 @@ document.addEventListener("DOMContentLoaded", function () {
             prevEl: '.swiper-button-prev',
           },
           slidesPerView: 1,
-          autoHeight: true,
+          autoHeight: false,
           preventInteractionOnTransition: true,
+          mousewheel: {
+            forceToAxis: true,
+            sensitivity: 1,
+            thresholdDelta: 40,
+            thresholdTime: 400,
+          },
           on: {
             init: function() {
               console.log('Swiper 初期化成功！');
               this.update();
-              this.slideTo(0, 0);
             },
           },
         });
@@ -502,9 +663,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function closeModal() {
       console.log('モーダルを閉じる処理開始');
       
-      // モーダルを非表示
+      // モーダルを非表示（スクロール解除はアニメ完了後。ロックは維持）
       modalElement.classList.remove('is-open');
-      document.body.style.overflow = ''; // スクロール有効化
   
       // アニメーション完了後にクリーンアップ
       setTimeout(() => {
@@ -519,10 +679,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (wrapper) {
           wrapper.innerHTML = '';
         }
-        
-        // ScrollSmootherを再開
-        const smoother = ScrollSmoother.get();
-        if (smoother) smoother.paused(false);
+
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.width = '';
+
+        // overflow 解除と ScrollSmoother 再開は restore 内で行う
+        stopModalScrollLock();
+        restoreScrollPosition();
         
       }, 400); // CSSのtransition時間と合わせる
     }
@@ -531,22 +696,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // イベントリスナーの設定
     // =================================
     
-    // モーダルを開くトリガー
+    // モーダルを開くトリガー（ファイル名キーで紐付け。data-index は不要）
     document.querySelectorAll('.is-style-works-image img').forEach((item) => {
       console.log('クリックイベント登録:', item);
       
       item.addEventListener('click', (e) => {
-        e.preventDefault(); // デフォルトの動作を防ぐ
+        e.preventDefault();
         
-        const index = parseInt(item.getAttribute('data-index'), 10);
-        console.log('クリックされました。インデックス:', index);
+        const key = getWorksKeyFromImg(item);
+        console.log('クリックされました。キー:', key);
         
-        if (isNaN(index)) {
-          console.error('data-index が正しく設定されていません:', item);
+        if (!key || !portfolioDataMap[key]) {
+          console.error('対応するモーダルデータがありません:', key, item);
           return;
         }
         
-        openModal(index);
+        openModal(key);
       });
     });
   

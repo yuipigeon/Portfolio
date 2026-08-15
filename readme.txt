@@ -43,16 +43,16 @@ SCSS（Sass）でのFLOCSS設計、そしてVite + Node.js + npm を使って、
 
 - **Vite**  
   モダンなビルドツール。SCSSやJSのバンドルを高速に実行
-    Vite    | 7.0.0
+    Vite    | 6.3.5
 
 - **Node.js / npm**  
     ViteとSassのビルド環境構築用に使用
     Node.js | v22.15.0
-    npm     | 10.9.2
+    npm     | 11.4.2
 
 - **Swiper / GSAP**  
   スライダーやスクロールアニメーションを演出
-    Swiper  | 11.0.0
+    Swiper  | 11.2.8
     GSAP    | 3.13.0
 
 ---
@@ -66,6 +66,13 @@ SCSS（Sass）でのFLOCSS設計、そしてVite + Node.js + npm を使って、
   `functions.php` やテンプレート階層を利用したテーマ設計
 
 ---
+
+### フォント
+
+ロゴに使用フォント
+Putung：Copyright (c) 2025 Khurasan. All rights reserved.
+Alucky：Copyright (c) 2025 Khurasan. All rights reserved.
+
 
 ##  ディレクトリ構成
     portfolio                                   
@@ -91,96 +98,23 @@ SCSS（Sass）でのFLOCSS設計、そしてVite + Node.js + npm を使って、
     ├─ picture                                  # 
     │   ├─ background.webp                      # 背景画像
     │   ├─ flowerbackground.webp                # ヒーロ画像
-    │   ├─ hamburger-description.webp           # 実績画像　ポートフォリオ
-    │   ├─ hamburger.webp                       # 実績画像　ハンバーガーサイト（架空）
     │   ├─ logo.png                             # ロゴ画像メイン
     │   ├─ logo2.webp                           # ロゴ画像
     │   ├─ favicon.png                          # ファビコン画像
-    │   ├─ portfolio-description.webp           # 実績詳細　モーダル用
-    │   ├─ portfolio.webp                       # 実績詳細　モーダル用
-    │   └─ profile.webp                         # プロフィール写真
-    │   
-    ├─ portfolio                                 
-    │   ├─ public                               
-    │   │   └─ vite.svg                         # 
-    │   │   
-    │   ├─ src                                  # 
-    │   │   ├─ counter.js                       # 
-    │   │   ├─ javascript.svg                   # 
-    │   │   ├─ main.js                          # 
-    │   │   └─ style.css                        # 
-    │   │   
-    │   ├─ .gitignore                           # 
-    │   ├─ index.html                           # 
-    │   └─ package.json                         # 
+    │   ├─ profile.webp                         # プロフィール写真
+    │   └─ modal/                               # 実績モーダル用スライド画像（軽量版）
+    │       ├─ cocohome.webp / cocohome-description.webp
+    │       ├─ kagu.webp / kagu-description.webp
+    │       ├─ hamburger.webp / hamburger-description.webp
+    │       └─ portfolio.webp / portfolio-description.webp
     │   
     ├─ scss                                     # 
-    │   ├─ foundation                           # 
-    │   │   ├─ global                           # 
-    │   │   │   ├─ _color.scss                  # 
-    │   │   │   ├─ _font.scss                   # 
-    │   │   │   ├─ _index.scss                  # 
-    │   │   │   └─ _mixin.scss                  # 
-    │   │   │   
-    │   │   └─ _reset.scss                      # 
-    │   │   
-    │   ├─ layout                               # 
-    │   │   ├─ _footer.scss                     # 
-    │   │   ├─ _header.scss                     # 
-    │   │   ├─ _main.scss                       # 
-    │   │   └─ _wrapper.scss                    # 
-    │   │   
-    │   ├─ object                               # 
-    │   │   ├─ component                        # 
-    │   │   │   ├─ _c-button.scss               # 
-    │   │   │   ├─ _c-hamburger.scss            # 
-    │   │   │   ├─ _c-icon.scss                 # 
-    │   │   │   ├─ _c-image.scss                # 
-    │   │   │   ├─ _c-label.scss                # 
-    │   │   │   ├─ _c-link.scss                 # 
-    │   │   │   ├─ _c-solid.scss                # 
-    │   │   │   ├─ _c-text.scss                 # 
-    │   │   │   └─ _c-title.scss                # 
-    │   │   │   
-    │   │   ├─ project                          # 
-    │   │   │   ├─ _p-block-style-contact.scss  # contactコンテンツ装飾用
-    │   │   │   ├─ _p-block-style-privacy.scss  # 個人情報のお取り扱いについてのコンテンツ装飾用
-    │   │   │   ├─ _p-block-style-profile.scss  # profileコンテンツ装飾用
-    │   │   │   ├─ _p-block-style-service.scss  # serviceコンテンツ装飾用
-    │   │   │   ├─ _p-block-style-works.scss    # worksコンテンツ装飾用
-    │   │   │   ├─ _p-block-style.scss          # 他必要に応じて利用　コンテンツ内装飾用
-    │   │   │   ├─ _p-block.scss                # 
-    │   │   │   ├─ _p-card.scss                 # 
-    │   │   │   ├─ _p-contact.scss              # 
-    │   │   │   ├─ _p-footer.scss               # 
-    │   │   │   ├─ _p-grid-profile.scss         # 
-    │   │   │   ├─ _p-grid.scss                 # 
-    │   │   │   ├─ _p-header.scss               # 
-    │   │   │   ├─ _p-hero.scss                 # 
-    │   │   │   ├─ _p-link.scss                 # 
-    │   │   │   ├─ _p-menu.scss                 # 
-    │   │   │   ├─ _p-modal.scss                # 
-    │   │   │   ├─ _p-page404.scss              # 
-    │   │   │   ├─ _p-slide.scss                # 
-    │   │   │   ├─ _p-smooth.scss               # 
-    │   │   │   ├─ _p-swiper.scss               # 
-    │   │   │   └─ _p-title.scss                # 
-    │   │   │   
-    │   │   └─ utility                          
-    │   │       ├─ _u-center.scss               # 
-    │   │       ├─ _u-font.scss                 # 
-    │   │       ├─ _u-lineheight.scss           # 
-    │   │       ├─ _u-margin.scss               # 
-    │   │       ├─ _u-none.scss                 # 
-    │   │       ├─ _u-padding.scss              # 
-    │   │       ├─ _u-text.scss                 # 
-    │   │       ├─ _u-weight.scss               # 
-    │   │       └─ _u-width.scss                # 
-    │   │       
-    │   └─ style.scss                           # 
+    │   ├─ foundation / layout / object         # FLOCSS
+    │   └─ style.scss                           # エントリ
     │   
     ├─ src                                      
-    │   └─ main.js                              # コーディング用。bundle.jsにコンパイルが必要
+    │   ├─ main.js                              # サイト全体のJS。bundle.jsにビルド
+    │   └─ portfolio-data.js                    # 実績モーダルデータ（運用で編集する）
     │   
     ├─ template-parts                           
     │   └─ content-single.php                   # TOPに投稿ページを読み込むファイル
@@ -202,6 +136,37 @@ SCSS（Sass）でのFLOCSS設計、そしてVite + Node.js + npm を使って、
     └─ vite.config.js                           # 
 
 
+##  Works 実績モーダルの追加・更新（運用）
+
+実績スライダーの中身は **`src/portfolio-data.js`** だけ編集します（`main.js` は触らなくてOK）。
+
+### 紐付けの仕組み
+
+- 一覧サムネ（メディアライブラリのファイル名）と、`portfolio-data.js` のキーを揃える
+- 例: `cocohome.webp` / `cocohome-1024x1024.webp` → キーは `cocohome`
+- エディタ上の並び順は関係ない（番号の付け替え不要）
+
+### 新規実績を足す手順
+
+1. メディアライブラリに一覧用サムネをアップ（ファイル名ベース = キー）
+2. モーダル用画像を `picture/modal/` に置く（例: `newwork.webp`, `newwork-description.webp`）
+3. WordPress エディタの Works に画像ブロックを追加し、スタイル「実績画像」を適用
+4. `src/portfolio-data.js` にキーを1件追加（配列の先頭がスワイパー1枚目）
+5. ビルドする
+
+```bash
+npm run build
+```
+
+6. 本番には少なくとも次をアップする
+   - `dist/bundle.js`
+   - `picture/modal/` に追加した画像
+
+### スライドの順番
+
+`portfolio-data.js` 内の配列順がそのままスワイパー表示順です。詳細を先に出す場合は `*-description.webp` を配列の先頭にします。
+
+
 ##  開発環境構築（ローカル）
 
 ### 必須環境
@@ -220,10 +185,20 @@ npm install -D vite sass
 
 # 3. ビルド実行（dist/style.cssとbundle.jsを出力）
 npm run build
+```
 
 ### npmスクリプト
 
+```json
 "scripts": {
   "dev": "vite",
   "build": "vite build"
 }
+```
+
+※ ブラウザが読むのは `src/` ではなくビルド後の `dist/bundle.js` / `dist/style.css` です。
+
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Twitter: @rich_clark

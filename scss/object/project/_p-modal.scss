@@ -51,7 +51,7 @@
   &__close {
     position: absolute;
     top: 0; 
-    right: 3.44rem;
+    right: 0;
     font-size: clamp(4rem, 4.7vw, 20rem);
     width: 6.5rem;
     height: 10.5rem;
@@ -61,7 +61,7 @@
     color: white;
     cursor: pointer;
     @include g.pc{
-      top: 5;
+      top: 0;
       right: 8.5rem;
     }
   }

@@ -13,18 +13,21 @@ add_theme_support( 'editor-styles' ); //エディタースタイルを有効化
 //CSSファイルの読み込み ress.cssの後にstyle.cssを読み込む
 function my_enqueue_assets(){
     
-    wp_enqueue_style('style',get_theme_file_uri('dist/style.css'),array(),'1.0.0','all');
-    wp_enqueue_style('swiper',get_theme_file_uri('css/swiper-bundle.css'),array(),'11.0.0','all');
-    wp_enqueue_script('swiper', get_theme_file_uri('js/swiper-bundle.min.js'), array(), '11.0.0', true);
+    wp_enqueue_style('style',get_theme_file_uri('dist/style.css'),array(),'1.0.8','all');
+    // Swiper はモーダル初回オープン時に JS から動的読み込み（初期表示の軽量化）
     wp_enqueue_script('gsap', get_theme_file_uri('js/gsap.min.js'), array(), '3.13.0', true);
     wp_enqueue_script('scrolltoplugin', get_theme_file_uri('js/ScrollToPlugin.min.js'), array('gsap'), '3.13.0', true);
     wp_enqueue_script('scrolltrigger', get_theme_file_uri('js/ScrollTrigger.min.js'), array('gsap'), '3.13.0', true);
     wp_enqueue_script('scrollsmoother', get_theme_file_uri('js/ScrollSmoother.min.js'), array('gsap','scrolltrigger'), '3.13.0', true);
-    wp_enqueue_script('main',get_theme_file_uri('dist/bundle.js'),array('swiper', 'gsap', 'scrolltrigger', 'scrollsmoother', 'scrolltoplugin'),'1.0.0',true);
+    wp_enqueue_script('main',get_theme_file_uri('dist/bundle.js'),array('gsap', 'scrolltrigger', 'scrollsmoother', 'scrolltoplugin'),'1.0.10',true);
     // wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
+    
 
     wp_localize_script('main', 'wpData', [
-        'isFrontPage' => is_front_page()
+        'isFrontPage' => is_front_page(),
+        'themeUri' => trailingslashit( get_theme_file_uri() ),
+        'swiperJs' => get_theme_file_uri('js/swiper-bundle.min.js'),
+        'swiperCss' => get_theme_file_uri('css/swiper-bundle.css'),
       ]);
 }
 add_action('wp_enqueue_scripts','my_enqueue_assets');
@@ -311,6 +314,13 @@ function custom_block_styles() {
         array(
             'name'         => 'profile-text-2', // スタイル名
             'label'        => '写真右横のキスト', // スタイルの表示名
+        )
+    );
+    register_block_style(
+        'core/group', // ブロック名
+        array(
+            'name'         => 'profile-skill', // スタイル名
+            'label'        => 'プロフィールスキル', // スタイルの表示名
         )
     );
     register_block_style(

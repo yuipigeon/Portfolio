@@ -11,7 +11,7 @@ export default defineConfig({
     }
   },
   build: {
-    minify: false, // 圧縮を無効にするとコメントが残る
+    minify: true,
     outDir: 'dist', // 出力先をテーマ直下に
     emptyOutDir: false, // フォルダ削除を無効化
     cssCodeSplit: false, // CSSを1つのファイルにまとめる

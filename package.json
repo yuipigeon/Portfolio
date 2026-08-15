@@ -13,8 +13,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass --watch scss/style.scss:style.css",
-    "build": "vite build",
-    "dev": "vite"
+    "build": "node ./node_modules/vite/bin/vite.js build",
+    "dev": "node ./node_modules/vite/bin/vite.js"
   },
   "keywords": [],
   "author": "",

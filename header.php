@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>> 
-<head>
+<head prefix="og: https://ogp.me/ns#">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="<?php bloginfo('description'); ?>">
     <meta name="keywords" content="Web制作, フリーランス, WordPress, ホームページ, サイト, コーディング, 名古屋, コーディング, ワードプレス, 安い, 丁寧, 安心">
+    <meta property="og:site_name" content="And 8" />
+    <meta property="og:title" content="愛知を中心にフリーランスとしてコーディングをしているAnd 8 -yuiko miyano- のwebサイト" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://andeight.net/" />
+    <meta property="og:image" content="https://andeight.net/wp-content/uploads/2025/07/screenshotogp.png" />
+    <meta property="og:image:width" content="1196" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="And 8 - フリーランスWeb制作ポートフォリオ" />
+    <meta property="og:description" content="使いやすいサイトをリーズナブルにご提供。フリーランスだからこそ実現します。名古屋を拠点に全国のお客様へWebサイトをお作りします。お気軽にお問い合わせフォームよりご相談ください。" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://andeight.net/wp-content/uploads/2025/07/screenshotogp.png" />
+    <meta name="twitter:image:alt" content="And 8 - フリーランスWeb制作ポートフォリオ" />
+    <meta name="twitter:site" content="@y_coder_and8" />
+    <meta name="twitter:creator" content="@y_coder_and8" />
+    <meta name="x:card" content="summary_large_image" />
+    <meta name="x:image" content="https://andeight.net/wp-content/uploads/2025/07/screenshotogp.png" />
+    <meta name="x:image:alt" content="And 8 - フリーランスWeb制作ポートフォリオ" />
+    <meta name="x:site" content="@y_coder_and8" />
+    <meta name="x:creator" content="@y_coder_and8" />
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> class="js-fix"  id="top">
+<body <?php body_class(); ?> class="js-fix" >
     <?php wp_body_open(); ?>
         <div class="l-wrapper" id="js-wrapper">
             <div class="js-fix content-wrapper" id="js-content">
-                <header class="l-header" role="banner">
+                <header class="l-header" role="banner"  id="top">
                     <div class="p-header__inner" >
                         <div class="u-text__small p-header__title">
                             <h1 class="p-header__logo--area">
@@ -44,29 +65,6 @@
                             <?php else : ?>
                                 <p class="l-sidebar__menu__list">メニューはまだ設定されていません。</p>
                             <?php endif; ?>
-                            <!-- <ul class="p-header__menulist">
-                                <li class="u-width__text">
-                                    <a href="#top" class="c-link__list u-padding__left--xxsmall" aria-label="And 8のホームへ"> Top </a>
-                                </li>
-                                <li class="">
-                                    <a href="#service" class="c-link__list"> Service </a>
-                                </li>   
-                                <li class="">
-                                    <a href="#works" class="c-link__list"> Works </a>
-                                </li>
-                                <li class="">
-                                    <a href="#profile" class="c-link__list"> Profile </a>
-                                </li>
-                                <li class="">
-                                    <div class="c-button__contact--area">
-                                        
-                                            <a href="#contact" class="c-button__contact--text c-link__list">
-                                                <span class="c-button__contact c-link__list">Contact </span>
-                                            </a>
-                                        
-                                    </div> 受講申込みだけナビとは別に作って背景枠ボックスごとリンクできるようにする。そして一番右に設置して、そこに合わせてflexboxを設置する?
-                                </li>
-                            </ul> -->
                             </nav>
                         </div><!--header_link-->
                     </div>
