@@ -188,3 +188,16 @@ $block: 'is-style';
       }
     }
   }
+
+#service {
+    .wp-block-columns.is-style-card-wrap {
+      @media screen and (max-width: 1199px) {
+        flex-direction: column;
+  
+        > .wp-block-column {
+          width: 100%;
+          flex-basis: 100% !important;
+        }
+      }
+    }
+}
