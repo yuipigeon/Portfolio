@@ -23,6 +23,10 @@ export default defineConfig({
           if (assetInfo.name && assetInfo.name.endsWith('.css')) {
             return 'style.css';          // CSSファイル名を固定
           }
+          // 背景画像はハッシュ無しで固定（デプロイ漏れで消えるのを防ぐ）
+          if (assetInfo.name && /background/i.test(assetInfo.name) && assetInfo.name.endsWith('.webp')) {
+            return 'background.webp';
+          }
           return '[name]-[hash].[ext]';  // その他はハッシュ付き
         },
       }, 
