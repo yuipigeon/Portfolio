@@ -119,17 +119,33 @@ $block: 'is-style';
 .#{$block}-card-wrap{
     position: relative;
     z-index: 1;
+    // card-wrap は core/columns（flex）。単一カラム（Price）を中央寄せ
+    justify-content: center;
     @include g.pc{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         width: 85%;
         margin: 0 auto;
+        // Price のように子が1つだけのときは中央に置く
+        &:has(> .wp-block-column:only-child) {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
     }
     >.wp-block-column
     >.wp-block-font-awesome-icon{
             font-size: 8rem;
             color: g.$color-lightGray;
             margin: 4rem;
+    }
+
+    // 単一カラム、または card-price スタイルの幅制限
+    > .wp-block-column:only-child,
+    > .wp-block-column.#{$block}-card-price {
+        flex: 0 1 min(100%, 620px);
+        width: 100%;
+        max-width: min(100%, 620px);
+        margin-inline: auto;
     }
 }
 .#{$block}-service-sentence{
@@ -139,14 +155,6 @@ $block: 'is-style';
     text-align: left;
     align-self: stretch; // 親カードの align-items:center で中央寄せされないようにする
     box-sizing: border-box;
-}
-
-.wp-block-column.is-style-card-wrap {
-    justify-content: center;
-  }
-  .wp-block-column.is-style-card-price {
-  flex: 0 1 min(100%, 620px);
-  margin-inline: auto;
 }
 //profile
 
