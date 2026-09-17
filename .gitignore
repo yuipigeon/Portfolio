@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# logs / maps / cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+.sass-cache/
+*.css.map
+
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# local tooling
+.cursor/
+agent-tools/

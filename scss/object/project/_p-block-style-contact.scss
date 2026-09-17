@@ -6,7 +6,8 @@ $block: 'is-style';
     width:80.3%;
     display: block;
     margin: 5rem auto;
-    line-height: 2.5rem;
+    font-size: 0.9rem !important;
+    line-height: 2rem;
     font-family: g.$fontMp;
     text-align: left;
     @include g.tab{
@@ -31,13 +32,12 @@ $block: 'is-style';
     width: 80.3%;
     row-gap: 1rem;
     margin:5rem auto;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     color: g.$color-black;
-    line-height: 2.78rem;
-    font-weight: g.$bold;
+    line-height: 2.5rem;
+    font-weight: g.$Mbold;
     font-family: g.$fontMp;
     @include g.tab{
-        font-size: 1.52rem;
         width: 36.5rem;
         max-width: 89.3%;
     }
@@ -48,27 +48,20 @@ $block: 'is-style';
     font: g.$fontMp;
     &__text{
         position: relative;
-        &::after{
-            content: '必須';
-            color: g.$color-red;
-            position: absolute;
-            top: 50%;
-            right: -30%;
-            transform: translateY(-50%);
-            font-size: 0.8rem;
-        }
     }
 }
 
-.wp-block-snow-monkey-forms-item:nth-child(3) .smf-item__label__text::after{
-    display: none;
-}
-
-.wp-block-snow-monkey-forms-item:nth-child(5) .smf-item__label__text::after{
+// 必須バッジは data-validations に required がある項目だけ表示
+.smf-item:has([data-validations*="required"]) .smf-item__label__text::after{
+    content: '必須';
+    color: g.$color-red;
+    position: absolute;
     top: 50%;
-    right: -17%;
+    left: calc(100% + 0.5rem);
     transform: translateY(-50%);
-    font: g.$fontMp;
+    font-size: 0.8rem;
+    font-family: g.$fontMp;
+    white-space: nowrap;
 }
 
 [data-screen="confirm"] .input_txt {
@@ -85,20 +78,31 @@ $block: 'is-style';
     height: 26rem;
 }
 
-.smf-checkboxes-control__control{
+.smf-checkboxes-control__control,
+.smf-radio-buttons-control__control{
     display: flex !important;
-    justify-content: center !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    row-gap: 0.75rem;
 }
 
-.smf-checkbox-control{
+.smf-checkbox-control,
+.smf-radio-button-control{
+    display: inline-flex !important;
     align-items: center !important;
+    gap: 0.5rem;
+
     &__control {
         margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        align-self: center;
     }
-}
 
-.smf-checkbox-control__label{
-    font-size: 1rem !important;
+    &__label {
+        font-size: inherit !important;
+        line-height: 1.5 !important;
+    }
 }
 
 .smf-action{//

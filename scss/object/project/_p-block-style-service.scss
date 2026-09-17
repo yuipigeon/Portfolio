@@ -135,6 +135,10 @@ $block: 'is-style';
 .#{$block}-service-sentence{
     margin: 0 5%;
     line-height: 2.5rem;
+    width: 90%;
+    text-align: left;
+    align-self: stretch; // 親カードの align-items:center で中央寄せされないようにする
+    box-sizing: border-box;
 }
 //profile
 
