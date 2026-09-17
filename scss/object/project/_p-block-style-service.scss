@@ -170,9 +170,9 @@ $block: 'is-style';
 // }
 .is-style-card-center,
 .is-style-card-right {
-  .is-style-service-sentence {
+   
     @include g.tab {
       text-align: center;
-    }
+    
   }
 }
