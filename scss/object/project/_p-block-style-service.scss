@@ -112,10 +112,12 @@ $block: 'is-style';
         margin: 3.5rem !important;
     }
   }
+  
 .#{$block}-service-heading {
-    font-size: clamp(2.8rem,4vw,6.2rem);
+    font-size: 2.5rem;
     color: g.$color-gray;
   }
+
 .#{$block}-card-wrap{
     position: relative;
     z-index: 1;

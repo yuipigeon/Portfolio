@@ -235,11 +235,12 @@ input, select {
 }
 
 h1 {
+  font-size: 1rem !important;
   line-height: 1.7;
 }
 @media screen and (min-width: 781px) {
   h1 {
-    font-size: 0.75rem;
+    font-size: 0.75rem !important;
   }
 }
 
@@ -833,7 +834,7 @@ h1 {
 }
 
 .is-style-service-heading {
-  font-size: clamp(2.8rem, 4vw, 6.2rem);
+  font-size: 2.5rem;
   color: #707070;
 }
 
@@ -873,6 +874,38 @@ h1 {
   text-align: left;
   align-self: stretch;
   box-sizing: border-box;
+}
+
+.is-style-card-center .is-style-service-sentence,
+.is-style-card-right .is-style-service-sentence,
+.is-style-card-left .is-style-service-sentence {
+  text-align: center !important;
+}
+@media screen and (min-width: 1200px) {
+  .is-style-card-center .is-style-service-sentence,
+  .is-style-card-right .is-style-service-sentence,
+  .is-style-card-left .is-style-service-sentence {
+    text-align: left !important;
+  }
+}
+
+.is-style-card-wrap .is-style-service-sentence {
+  text-align: center !important;
+}
+@media screen and (min-width: 1200px) {
+  .is-style-card-wrap .is-style-service-sentence {
+    text-align: left !important;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  #service .wp-block-columns.is-style-card-wrap {
+    flex-direction: column;
+  }
+  #service .wp-block-columns.is-style-card-wrap > .wp-block-column {
+    width: 100%;
+    flex-basis: 100% !important;
+  }
 }
 
 .is-style-contact-text {
@@ -1316,8 +1349,9 @@ h1 {
 }
 @media screen and (min-width: 1200px) {
   .is-style-profile-skill {
-    width: 100%;
-    margin: 0 auto 3rem;
+    flex-direction: column;
+    width: fit-content;
+    margin: 0 auto;
   }
 }
 .is-style-profile-skill > div {
