@@ -141,14 +141,14 @@ $block: 'is-style';
     box-sizing: border-box;
 }
 
-.is-style-card-wrap {
+.wp-block-column.is-style-card-wrap {
     justify-content: center;
   }
   
-  .is-style-card-price {
-    flex: 0 1 min(100%, 620px);
-    margin-inline: auto;
-  }
+  .wp-block-column.is-style-card-price {
+  flex: 0 1 min(100%, 620px);
+  margin-inline: auto;
+}
 //profile
 
 //works
