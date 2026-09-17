@@ -140,6 +140,15 @@ $block: 'is-style';
     align-self: stretch; // 親カードの align-items:center で中央寄せされないようにする
     box-sizing: border-box;
 }
+
+.is-style-card-wrap {
+    justify-content: center;
+  }
+  
+  .is-style-card-price {
+    flex: 0 1 min(100%, 620px);
+    margin-inline: auto;
+  }
 //profile
 
 //works
