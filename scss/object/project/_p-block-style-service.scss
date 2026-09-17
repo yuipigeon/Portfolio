@@ -169,10 +169,13 @@ $block: 'is-style';
 //   }
 // }
 .is-style-card-center,
-.is-style-card-right {
-   
-    @include g.tab {
-      text-align: center;
-    
+.is-style-card-right, 
+.is-style-card-left {
+  .is-style-service-sentence {
+    text-align: center;
+
+    @include g.pc {
+      text-align: left;
+    }
   }
 }
