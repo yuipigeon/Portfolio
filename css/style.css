@@ -1346,6 +1346,7 @@ h1 {
   justify-content: center;
   margin: 2rem auto 3rem 12%;
   line-height: 2.9rem;
+  flex-direction: column;
 }
 @media screen and (min-width: 1200px) {
   .is-style-profile-skill {
