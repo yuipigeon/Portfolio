@@ -172,10 +172,10 @@ $block: 'is-style';
 .is-style-card-right, 
 .is-style-card-left {
   .is-style-service-sentence {
-    text-align: center;
+    text-align: center !important;
 
     @include g.pc {
-      text-align: left;
+      text-align: left !important;
     }
   }
 }
