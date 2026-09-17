@@ -45,9 +45,12 @@ h1 {
     }
 }
 
-:root .has-text-align-left {
-    text-align: left;
-    @include g.tab{
-        text-align: center;
+.is-style-card-right {
+    .is-style-service-sentence {
+      text-align: center;
+  
+      @media screen and (max-width: 1025px) {
+        text-align: left;
+      }
     }
-}
+  }
