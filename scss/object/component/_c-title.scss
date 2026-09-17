@@ -46,6 +46,7 @@ h1 {
 }
 
 :root .has-text-align-left {
+    text-align: left !important;
     @include g.tab{
         text-align: center !important;
     }
