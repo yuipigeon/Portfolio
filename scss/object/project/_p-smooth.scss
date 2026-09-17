@@ -6,10 +6,17 @@
     min-height: 100vh;
     height: auto;
     overflow-y: auto; 
+    will-change: transform;
     @include g.pc{
         padding-top: 13rem;
     }
 }
+
+#smooth-wrapper {
+    /* スマホでの高さ設定 */
+    height: 100vh;
+    overflow: hidden;
+  }
 
 .p-smooth{
     &__background{

@@ -24,3 +24,6 @@ yarn-error.log*
 # local tooling
 .cursor/
 agent-tools/
+
+# local experiments
+plugin-test/

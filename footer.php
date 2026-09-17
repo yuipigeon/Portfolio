@@ -1,7 +1,7 @@
                         <footer class="l-footer">
                             <div class="l-footer__inner">
                                 <div class="p-footer__solid"> 
-                                    <small class="p-footer__copyright u-font">
+                                    <small class="p-footer__copyright">
                                         &copy; And 8
                                     </small>
                                 </div>

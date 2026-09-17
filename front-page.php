@@ -10,7 +10,7 @@
                 <div  class="c-hamburger__button--area" id="js-hamburger-close">
                     <div class="c-hamburger__button--close" id="js-close-button"></div>
                 </div>
-                <div>
+                <div class="p-menu__contents">
                     <?php if (has_nav_menu('hamburger')) : ?>
                     <?php wp_nav_menu( array(
                         'menu' => '',
@@ -37,11 +37,6 @@
                             <div class="p-hero__background"></div>
                             <p class="c-title__hero p-title__hero" id="js-title-hero"><span data-lag="0.08">Beyond the visible.Living code behind design.</span></p>
                         </div>
-                        <!-- <article class="u-center__text">
-                        <p class="c-text__large u-margin__center">And 8 はフリーランスの柔軟性でみなさまのビジネスをサポートします。<br>
-                            しっかりとしたコミュニケーションで円滑なサイト作りを提供します。</p> 
-                        </p>
-                        </article> -->
                         <div id="service">
                         <?php
                             $post_id = 28; // 表示したい投稿のID

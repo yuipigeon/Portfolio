@@ -81,6 +81,7 @@
         top: 1rem;
         height: auto;
         width: clamp(1rem, 66vw, 18rem);
+        
         @include g.tab{
             left: 2rem;
             top: 1.5rem;

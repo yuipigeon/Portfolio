@@ -1,13 +1,14 @@
 @use "../../foundation/global/index" as g;
 
 .p-block{
+    padding-top: 50px;
+    margin-top: -50px;
     &__card{
         @include g.pc{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            width: 85%;
+            width: 80%;
             margin: 0 auto;
         }
     }
-
 }

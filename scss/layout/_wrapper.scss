@@ -9,7 +9,7 @@
     width: 100%;
     box-sizing: border-box; //box-sizing:inherit は、親要素のbox-sizingを継承する
     position: fixed;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     min-height: 100vh;
     grid-template-rows: 5rem 1fr 1.5rem;
     grid-template-columns: 100%;

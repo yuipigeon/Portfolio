@@ -7,12 +7,13 @@
     justify-content: center;
     align-items: center;
     margin: 0;
+    position: relative;
     &__wrapper {
     /* wrapperのサイズを調整 */
     width: 100%;
     height: 100%;
   }
-  
+
   &__slide {
     /* スライドのサイズを調整、中身のテキスト配置調整、背景色 */
     color: #ffffff;
@@ -50,32 +51,72 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    aspect-ratio: 1/1;
+    // aspect-ratio: 1/1;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     img {
-      width: 45.25% !important;
+      width: 80% !important;
+      max-width: 90vw;
+      max-height: 70vh;
       position: absolute;
-      aspect-ratio: 1/1;
+      // aspect-ratio: 1/1;
+      object-fit: contain;
+      @include g.pc {
+        // width: 45.25% !important;
+        // max-width: 50vw;
+        // max-height: 60vh;
+      }
     }
   }
   .swiper-button-next{
+    right: 0rem !important;
+    @include g.pc{
+      right: 10px;
+    }
     &::after{
       color: g.$color-white !important;
+      font-size: 1.875rem !important;
+      @include g.pc{
+        font-size: 2.75rem !important;
+      }
     }
   }
   .swiper-button-prev{
+    left: 0rem !important;
+    @include g.pc{
+      left: 10px;
+    }
     &::after{
       color: g.$color-white !important;
+      font-size: 1.875rem !important;
+      @include g.pc{
+        font-size: 2.75rem !important;
+      }
     }
   }
   .swiper-pagination{
     &-bullets{
-      position: absolute;
-      bottom: 22.7% !important;
+      bottom: 7.7% !important;
+      position: fixed;
+      @include g.pc{
+        bottom: 11.7% !important;
+        position: fixed;
+      }
     }
     &-bullet{
       --swiper-theme-color: white;
     }
   }
+
+  .swiper-scrollbar{
+    display: none ;
+  }
   
-  
+  // Swiperでのタッチ操作を許可
+.swiper,
+.p-swiper {
+  touch-action: pan-x pan-y;
+}
+
+.swiper-autoheight, .swiper-autoheight .swiper-slide {
+  height: 100vh !important;
+}

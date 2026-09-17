@@ -109,7 +109,6 @@ $block: 'is-style';
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    //width: 80.3%;
     @include g.tab{display: flex;
         display: flex;
         flex-direction: row;
@@ -121,8 +120,7 @@ $block: 'is-style';
 }
 
 .smf-button-control{
-    width: 100%;
-    margin: 0 !important;
+    margin: 0 auto  !important;
 }
 
 .smf-button-control__control[data-action="confirm"]
@@ -153,13 +151,13 @@ $block: 'is-style';
     display: flex !important;
     justify-content: center;
     width: auto !important;
-    margin: 2.5rem auto 1rem auto;
+    margin: 2.5rem auto 15rem auto;
     padding: 0.5rem 2rem;
     background-color: g.$color-lightGrayT;
     color: g.$color-black;
     font-size: 1rem;
     border: solid 1px rgba(112, 112, 112, 0.78) !important;
-    border-radius: 4px !important;
+    border-radius: 25px !important;
     //width: clamp(4rem,28%,6rem);
     cursor: pointer;
     transition: background-color 0.3s;
@@ -168,9 +166,6 @@ $block: 'is-style';
       background-color: g.$color-grayT !important;
       color: g.$color-darkBlack !important;
       background-image: none;
-    }
-    @include g.tab {
-        margin: 2.5rem auto 15rem 1rem;
     }
 }
 
