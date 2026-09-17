@@ -13,7 +13,7 @@ add_theme_support( 'editor-styles' ); //エディタースタイルを有効化
 //CSSファイルの読み込み ress.cssの後にstyle.cssを読み込む
 function my_enqueue_assets(){
     
-    wp_enqueue_style('style',get_theme_file_uri('dist/style.css'),array(),'1.0.8','all');
+    wp_enqueue_style('style',get_theme_file_uri('dist/style.css'),array(),'1.0.9','all');
     // Swiper はモーダル初回オープン時に JS から動的読み込み（初期表示の軽量化）
     wp_enqueue_script('gsap', get_theme_file_uri('js/gsap.min.js'), array(), '3.13.0', true);
     wp_enqueue_script('scrolltoplugin', get_theme_file_uri('js/ScrollToPlugin.min.js'), array('gsap'), '3.13.0', true);

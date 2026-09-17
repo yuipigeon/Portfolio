@@ -234,6 +234,15 @@ input, select {
   color: #3E3E3E;
 }
 
+h1 {
+  line-height: 1.7;
+}
+@media screen and (min-width: 781px) {
+  h1 {
+    font-size: 0.75rem;
+  }
+}
+
 .c-button__contact--area {
   width: 5rem;
   height: 5rem;
@@ -707,7 +716,6 @@ input, select {
 .is-style-service-text {
   width: 80.3%;
   margin: 5rem auto 1.5%;
-  line-height: 2.5rem;
   font-family: "M PLUS 1p", Noto Sans JP, MyYuGothicM, YuGothic, -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", Meiryo, Verdana, arial, helvetica, sans-serif;
   text-align: left;
 }
@@ -832,6 +840,7 @@ input, select {
 .is-style-card-wrap {
   position: relative;
   z-index: 1;
+  justify-content: center;
 }
 @media screen and (min-width: 1200px) {
   .is-style-card-wrap {
@@ -840,29 +849,30 @@ input, select {
     width: 85%;
     margin: 0 auto;
   }
+  .is-style-card-wrap:has(> .wp-block-column:only-child) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 }
 .is-style-card-wrap > .wp-block-column > .wp-block-font-awesome-icon {
   font-size: 8rem;
   color: rgba(188, 186, 186, 0.8);
   margin: 4rem;
 }
+.is-style-card-wrap > .wp-block-column:only-child,
+.is-style-card-wrap > .wp-block-column.is-style-card-price {
+  flex: 0 1 min(100%, 620px);
+  width: 100%;
+  max-width: min(100%, 620px);
+  margin-inline: auto;
+}
 
 .is-style-service-sentence {
   margin: 0 5%;
-  line-height: 2.5rem;
   width: 90%;
   text-align: left;
   align-self: stretch;
   box-sizing: border-box;
-}
-
-.wp-block-column.is-style-card-wrap {
-  justify-content: center;
-}
-
-.wp-block-column.is-style-card-price {
-  flex: 0 1 min(100%, 620px);
-  margin-inline: auto;
 }
 
 .is-style-contact-text {

@@ -36,4 +36,17 @@
         color: g.$color-black;
     }
 }
-    
+   
+h1 {
+    font-size: 1rem !important;
+    line-height: 1.7;
+    @include g.tab{
+        font-size: 0.75rem !important;
+    }
+}
+
+:root .has-text-align-left {
+    @include g.tab{
+        text-align: center !important;
+    }
+}

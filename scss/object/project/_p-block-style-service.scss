@@ -5,7 +5,7 @@ $block: 'is-style';
 .#{$block}-service-text{
     width:80.3%;
     margin: 5rem auto 1.5%;
-    line-height: 2.5rem;
+    // line-height は theme.json / ブロックエディタの指定を優先（ここでは固定しない）
     font-family: g.$fontMp;
     text-align: left;
     @include g.tab{
@@ -150,7 +150,7 @@ $block: 'is-style';
 }
 .#{$block}-service-sentence{
     margin: 0 5%;
-    line-height: 2.5rem;
+    // line-height は theme.json / ブロックエディタの指定を優先（ここでは固定しない）
     width: 90%;
     text-align: left;
     align-self: stretch; // 親カードの align-items:center で中央寄せされないようにする
