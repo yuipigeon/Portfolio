@@ -161,13 +161,3 @@ $block: 'is-style';
 //works
 
 //contact
-
-.is-style-card-right {
-    .is-style-service-sentence {
-      text-align: center;
-  
-      @media screen and (max-width: 1025px) {
-        text-align: left;
-      }
-    }
-  }
