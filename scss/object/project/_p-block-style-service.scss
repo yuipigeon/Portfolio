@@ -164,4 +164,7 @@ $block: 'is-style';
 #service .is-style-card-right
  {
   text-align: left !important;
+  @include g.tab{
+    text-align: center !important;
+  }
 }
