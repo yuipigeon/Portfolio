@@ -161,10 +161,18 @@ $block: 'is-style';
 //works
 
 //contact
-#service .is-style-card-right
- {
-  text-align: left !important;
-  @include g.tab{
-    text-align: center !important;
+// #service .is-style-card-right
+//  {
+//   text-align: left !important;
+//   @include g.tab{
+//     text-align: center !important;
+//   }
+// }
+.is-style-card-center,
+.is-style-card-right {
+  .is-style-service-sentence {
+    @include g.tab {
+      text-align: center;
+    }
   }
 }
