@@ -179,3 +179,12 @@ $block: 'is-style';
     }
   }
 }
+
+.is-style-card-wrap {
+    .is-style-service-sentence {
+      text-align: center !important;
+      @include g.pc {
+        text-align: left !important;
+      }
+    }
+  }
