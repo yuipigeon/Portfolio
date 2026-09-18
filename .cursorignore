@@ -1,0 +1,14 @@
+node_modules/
+vendor/
+dist/
+build/
+.next/
+coverage/
+.git/
+*.log
+
+# WordPress
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backup*/

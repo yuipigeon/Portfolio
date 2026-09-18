@@ -942,7 +942,7 @@ h1 {
   flex-direction: column;
   width: 80.3%;
   row-gap: 1rem;
-  margin: 5rem auto;
+  margin: 5rem auto 0;
   font-size: 0.9rem;
   color: #3E3E3E;
   line-height: 2.5rem;
