@@ -965,7 +965,7 @@ h1 {
 }
 
 .smf-item__label__text {
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 
 .smf-item:has([data-validations*=required]) .smf-item__label__text::after {

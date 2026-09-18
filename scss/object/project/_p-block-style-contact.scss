@@ -52,7 +52,7 @@ $block: 'is-style';
 }
 
 .smf-item__label__text {
-    font-weight: g.$Mbold;
+    font-weight: g.$Mbold !important;
 }
 
 // 必須バッジは data-validations に required がある項目だけ表示
