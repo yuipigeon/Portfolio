@@ -964,6 +964,10 @@ h1 {
   position: relative;
 }
 
+.smf-item__label__text {
+  font-weight: 400;
+}
+
 .smf-item:has([data-validations*=required]) .smf-item__label__text::after {
   content: "必須";
   color: #fc5050;

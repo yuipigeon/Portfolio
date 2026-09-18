@@ -51,6 +51,10 @@ $block: 'is-style';
     }
 }
 
+.smf-item__label__text {
+    font-weight: g.$Mbold;
+}
+
 // 必須バッジは data-validations に required がある項目だけ表示
 .smf-item:has([data-validations*="required"]) .smf-item__label__text::after{
     content: '必須';
