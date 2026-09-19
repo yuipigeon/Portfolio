@@ -6,6 +6,7 @@
     display: flex;
     position: absolute;
     grid-row: 1/2;
+    z-index: 2;
     //background: antiquewhite;//仮
         @include g.tab{
             height: 13rem;//217px

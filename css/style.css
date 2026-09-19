@@ -126,6 +126,7 @@ input, select {
   display: flex;
   position: absolute;
   grid-row: 1/2;
+  z-index: 2;
 }
 @media screen and (min-width: 781px) {
   .l-header {
@@ -1032,6 +1033,11 @@ h1 {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    width: 36.5rem;
+    max-width: 89.3%;
+  }
+  .smf-action:has(.smf-button-control + .smf-button-control) {
     justify-content: space-between;
   }
 }
@@ -1048,7 +1054,7 @@ h1 {
   background-color: rgba(188, 186, 186, 0.55);
   color: #3E3E3E;
   font-size: 1rem;
-  border: solid 1px rgba(112, 112, 112, 0.78) 　 !important;
+  border: solid 1px rgba(112, 112, 112, 0.78) !important;
   border-radius: 4px !important;
   width: auto !important;
   cursor: pointer;
@@ -2045,6 +2051,64 @@ h1 {
 .p-header__logo--area {
   position: relative;
 }
+.p-header__brand {
+  position: absolute;
+  left: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+@media screen and (min-width: 781px) {
+  .p-header__brand {
+    left: 2rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .p-header__brand {
+    left: 4rem;
+  }
+}
+.p-header__brand .p-header__logo {
+  position: static;
+  left: auto;
+  top: auto;
+  width: clamp(1rem, 66vw, 18rem);
+}
+@media screen and (min-width: 1200px) {
+  .p-header__brand .p-header__logo {
+    width: clamp(1rem, 66vw, 24rem);
+  }
+}
+.p-header__business-title {
+  margin: -0.5rem 0 0;
+  color: #707070;
+  font-family: "M PLUS 1p", Noto Sans JP, MyYuGothicM, YuGothic, -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", Meiryo, Verdana, arial, helvetica, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: normal;
+}
+@media screen and (min-width: 781px) {
+  .p-header__business-title {
+    margin-top: -0.75rem;
+    font-size: 0.9375rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .p-header__business-title {
+    margin-top: -1.25rem;
+    font-size: 1rem;
+  }
+}
+.p-header__phrase {
+  white-space: nowrap;
+}
 
 .p-card {
   width: 100%;
@@ -2405,7 +2469,7 @@ body.modal-open {
 }
 
 #smooth-content {
-  padding-top: 7rem;
+  padding-top: 11rem;
   overscroll-behavior: contain;
   min-height: 100vh;
   height: auto;

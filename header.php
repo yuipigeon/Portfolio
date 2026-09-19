@@ -35,19 +35,34 @@
                 <header class="l-header" role="banner"  id="top">
                     <div class="p-header__inner" >
                         <div class="u-text__small p-header__title">
+                            <?php if ( is_front_page() ) : ?>
+                            <div class="p-header__brand">
+                                <div class="p-header__logo--area">
+                                <?php if ( function_exists( 'get_custom_logo' ) ) {
+                                        $logo_html = get_custom_logo();
+
+                                        if ( $logo_html ) {
+                                            echo str_replace( 'class="custom-logo"', 'class="p-header__logo"', $logo_html );
+                                        } else {
+                                            echo '<img src="' . esc_url( get_theme_file_uri( 'picture/logo2.webp' ) ) . '" class="p-header__logo" alt="and 8 ロゴ">';
+                                        }
+                                    } ?>
+                                </div>
+                                <h1 class="p-header__business-title"><span class="p-header__phrase">名古屋のWordPress制作</span>・<span class="p-header__phrase">サイト改善</span>・<span class="p-header__phrase">AI活用支援</span></h1>
+                            </div>
+                            <?php else : ?>
                             <h1 class="p-header__logo--area">
                             <?php if ( function_exists( 'get_custom_logo' ) ) {
                                     $logo_html = get_custom_logo();
 
                                     if ( $logo_html ) {
-                                        // WordPressが自動で出力する class="custom-logo" を、自分の好きなクラス名に置き換える
                                         echo str_replace( 'class="custom-logo"', 'class="p-header__logo"', $logo_html );
                                     } else {
-                                        // カスタムロゴが未設定の場合はデフォルト画像を表示
                                         echo '<img src="' . esc_url( get_theme_file_uri( 'picture/logo2.webp' ) ) . '" class="p-header__logo" alt="and 8 ロゴ">';
                                     }
                                 } ?>
                             </h1>
+                            <?php endif; ?>
                         </div>
                         <div class="header_link p-header__nav">
                             <nav class="p-header__navarea" id="">

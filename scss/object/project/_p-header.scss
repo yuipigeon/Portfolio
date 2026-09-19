@@ -96,4 +96,56 @@
     &__logo--area{
         position: relative;
     }
+
+    &__brand{
+        position: absolute;
+        left: 0.625rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        @include g.tab{
+            left: 2rem;
+        }
+        @include g.pc{
+            left: 4rem;
+        }
+
+        .p-header__logo{
+            position: static;
+            left: auto;
+            top: auto;
+            width: clamp(1rem, 66vw, 18rem);
+            @include g.pc{
+                width: clamp(1rem, 66vw, 24rem);
+            }
+        }
+    }
+
+    &__business-title{
+        margin: -0.5rem 0 0;
+        color: g.$color-gray;
+        font-family: g.$fontMp;
+        font-size: 0.875rem;
+        font-weight: g.$Mbold;
+        letter-spacing: 0.08em;
+        line-height: 1.6;
+        white-space: normal;
+        @include g.tab{
+            margin-top: -0.75rem;
+            font-size: 0.9375rem;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+        }
+        @include g.pc{
+            margin-top: -1.25rem;
+            font-size: 1rem;
+        }
+    }
+
+    &__phrase{
+        white-space: nowrap;
+    }
 }
