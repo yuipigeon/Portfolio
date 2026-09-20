@@ -13,13 +13,14 @@ add_theme_support( 'editor-styles' ); //エディタースタイルを有効化
 //CSSファイルの読み込み ress.cssの後にstyle.cssを読み込む
 function my_enqueue_assets(){
     
-    wp_enqueue_style('style',get_theme_file_uri('dist/style.css'),array(),'1.0.9','all');
-    // Swiper はモーダル初回オープン時に JS から動的読み込み（初期表示の軽量化）
+    wp_enqueue_style('style',get_theme_file_uri('dist/style.css'),array(),'1.0.0','all');
+    wp_enqueue_style('swiper',get_theme_file_uri('css/swiper-bundle.css'),array(),'11.0.0','all');
+    wp_enqueue_script('swiper', get_theme_file_uri('js/swiper-bundle.min.js'), array(), '11.0.0', true);
     wp_enqueue_script('gsap', get_theme_file_uri('js/gsap.min.js'), array(), '3.13.0', true);
     wp_enqueue_script('scrolltoplugin', get_theme_file_uri('js/ScrollToPlugin.min.js'), array('gsap'), '3.13.0', true);
     wp_enqueue_script('scrolltrigger', get_theme_file_uri('js/ScrollTrigger.min.js'), array('gsap'), '3.13.0', true);
     wp_enqueue_script('scrollsmoother', get_theme_file_uri('js/ScrollSmoother.min.js'), array('gsap','scrolltrigger'), '3.13.0', true);
-    wp_enqueue_script('main',get_theme_file_uri('dist/bundle.js'),array('gsap', 'scrolltrigger', 'scrollsmoother', 'scrolltoplugin'),'1.0.10',true);
+    wp_enqueue_script('main',get_theme_file_uri('dist/bundle.js'),array('swiper', 'gsap', 'scrolltrigger', 'scrollsmoother', 'scrolltoplugin'),'1.0.0',true);
     // wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
     
 
@@ -500,3 +501,47 @@ add_action( 'init', 'custom_block_styles' );
         return $block_content;
     }
     add_filter( 'render_block', 'add_slide_in_class', 10, 2 );
+
+    // トップページ用：And 8の構造化データ
+function and8_output_organization_schema() {
+    if ( ! is_front_page() ) {
+        return;
+    }
+
+    $schema = array(
+        '@context'    => 'https://schema.org',
+        '@type'       => 'Organization',
+        '@id'         => home_url( '/#organization' ),
+        'name'        => 'And 8',
+        'url'         => home_url( '/' ),
+        'description' => '名古屋市名東区を拠点に、フリーランスとしてWordPressを使ったWebサイト制作・サイト改善を行っています。',
+        'founder'     => array(
+            '@type'         => 'Person',
+            'name'          => '宮野 結子',
+            'alternateName' => 'Yuiko Miyano',
+        ),
+        'areaServed'  => array(
+            array(
+                '@type' => 'AdministrativeArea',
+                'name'  => '名古屋市名東区',
+            ),
+            array(
+                '@type' => 'City',
+                'name'  => '名古屋市',
+            ),
+            array(
+                '@type' => 'Country',
+                'name'  => '日本',
+            ),
+        ),
+        'sameAs'      => array(
+            'https://x.com/y_coder_and8',
+            'https://github.com/yuiko-pigeon',
+        ),
+    );
+
+    echo '<script type="application/ld+json">'
+        . wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES )
+        . '</script>' . "\n";
+}
+add_action( 'wp_head', 'and8_output_organization_schema' );
