@@ -236,12 +236,17 @@ input, select {
 }
 
 h1 {
-  font-size: 1rem !important;
+  font-size: 0.75rem !important;
   line-height: 1.7;
 }
 @media screen and (min-width: 781px) {
   h1 {
     font-size: 0.75rem !important;
+  }
+}
+@media screen and (min-width: 1200px) {
+  h1 {
+    font-size: 1rem !important;
   }
 }
 

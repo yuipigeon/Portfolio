@@ -38,9 +38,12 @@
 }
    
 h1 {
-    font-size: 1rem !important;
+    font-size: 0.75rem !important;
     line-height: 1.7;
     @include g.tab{
         font-size: 0.75rem !important;
+    }
+    @include g.pc{
+        font-size: 1rem !important;
     }
 }
