@@ -133,7 +133,7 @@
         letter-spacing: 0.08em;
         line-height: 1.6;
         white-space: normal;
-        width: min(100vw, 310px);
+        width: 100vw;
         @include g.tab{
             margin-top: -0.75rem;
             font-size: 0.9375rem;
