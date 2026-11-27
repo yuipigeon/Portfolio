@@ -52,6 +52,18 @@
   color: var(--support-heading);
 }
 
+.p-support__section--facts .p-support__notes {
+    display: flex;
+    flex-direction: column;
+    margin-block: 50px;
+    border: solid 1px;
+    max-width: 540px;
+    padding: 50px 70px;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-inline: auto;
+}
+
 .p-support__section--facts .p-support__notes li {
   background: var(--support-beige);
   color: var(--support-heading);
