@@ -82,14 +82,13 @@ get_header();
                 <strong>WordPressサイトの保守運用プラン</strong>
                 <span>お客様がお持ちのWebサイトを更新・修正対応いたします</span>
             </h1>
-            <p class="p-support__lead">営業時間、料金、スタッフ、メニュー、お知らせを修正します。</p>
             <div class="p-support__offer" aria-label="料金の概要">
                 <p>1か月単位</p>
                 <p><strong>点検のあと、月額で更新対応</strong></p>
                 <p class="p-support__price"><span>月額</span> <strong>8,800</strong><small>円（税込）</small></p>
                 <ul class="p-support__notes">
                     <li>初回の点検 33,000円</li>
-                    <li>文章800字、写真3枚</li>
+                    <li>月文章800字、写真3枚　他複数サポート</li>
                     <li>追加は4,400円</li>
                 </ul>
             </div>
