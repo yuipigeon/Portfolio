@@ -175,7 +175,6 @@
 .p-support__notes li,
 .p-support__list li {
   padding: 0.35rem 0.8rem;
-  background: var(--support-white);
   border-radius: 999px;
 }
 
