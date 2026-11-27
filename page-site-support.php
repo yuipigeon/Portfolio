@@ -79,9 +79,8 @@ get_header();
             </ul>
             <p class="p-support__eyebrow">名古屋市名東区の And 8</p>
             <h1 class="p-support__title">
-                <span>WordPressサイトの保守</span>
-                <span>サイトはそのまま。</span>
-                <span>更新・修正対応いたします</span>
+                WordPressサイトの保守運用プラン
+                <span>お客様がお持ちのWebサイトを更新・修正対応いたします</span>
             </h1>
             <p class="p-support__lead">営業時間、料金、スタッフ、メニュー、お知らせを修正します。</p>
             <div class="p-support__offer" aria-label="料金の概要">
