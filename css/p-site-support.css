@@ -352,6 +352,7 @@
   
   .p-support__price-layout {
     grid-template-columns: 1fr;
+    margin-bottom: 1.5rem;
   }
 
   .p-support__grid {
