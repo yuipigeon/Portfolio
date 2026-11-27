@@ -195,13 +195,12 @@ get_header();
         <div class="p-support__inner">
             <p class="p-support__eyebrow">Updates</p>
             <h2 class="p-support__heading">更新作業について</h2>
-            <p>テーマやプラグインを定期的に更新します。</p>
             <div class="p-support__columns">
                 <div class="p-support__panel">
                     
                     <p><strong>テーマやプラグインを定期的に更新します。</strong></p>
                     <p><strong>更新の前に、ファイルとデータベースのバックアップを取ります。</strong></p>
-                    <p>当方の更新が原因で不具合が起きたときは、バックアップから戻し、主なページの表示と問い合わせフォームの確認までを月額の中で行います。安全な更新が認められないときは、月契約はスタートいたしません。</p>
+                    <p class="p-support__list">当方の更新が原因で不具合が起きたときは、バックアップから戻し、主なページの表示と問い合わせフォームの確認までを月額の中で行います。安全な更新が認められないときは、月契約はスタートいたしません。</p>
                 </div>
                 <div class="p-support__panel">
                     <h3>月契約を始めない条件</h3>
