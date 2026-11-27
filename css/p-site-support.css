@@ -95,6 +95,10 @@
   box-shadow: none;
 }
 
+.p-support__section--monthly .p-support__sprit {
+  align-items: end;
+}
+
 .p-support__section--ink {
   background: var(--support-heading);
   color: var(--support-beige);
