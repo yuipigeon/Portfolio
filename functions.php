@@ -33,6 +33,27 @@ function my_enqueue_assets(){
 }
 add_action('wp_enqueue_scripts','my_enqueue_assets');
 
+// 診断LP（スラッグ site-support）だけ追加CSSとフォントを読み込む
+function and8_enqueue_site_support_assets() {
+    if ( ! is_page( 'site-support' ) ) {
+        return;
+    }
+
+    wp_enqueue_style(
+        'and8-support-fonts',
+        'https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;700&family=Roboto:wght@500;700&display=swap',
+        array(),
+        null
+    );
+    wp_enqueue_style(
+        'and8-site-support',
+        get_theme_file_uri( 'css/p-site-support.css' ),
+        array( 'style', 'and8-support-fonts' ),
+        '1.0.0'
+    );
+}
+add_action( 'wp_enqueue_scripts', 'and8_enqueue_site_support_assets' );
+
 //タイトルに詳細を非表示
 function rewrite_title($title) {
     if (is_front_page()) {
