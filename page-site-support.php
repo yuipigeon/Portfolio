@@ -221,21 +221,6 @@ get_header();
         </div>
     </section>
 
-    <section class="p-support__section p-support__section--white">
-        <div class="p-support__inner p-support__cta">
-            <div>
-                <p class="p-support__eyebrow">Before we start</p>
-                <h2 class="p-support__heading" id="mid-cta-title">まずは、サイトのURLを教えてください。</h2>
-                <p>サイトのURLと、管理画面にご自身で入れるかどうかを教えてください。パスワードは書かないでください。この時点では入りません。</p>
-            </div>
-            <div class="p-support__panel">
-                <p><strong>月額 8,800円</strong><br>初回の点検は 33,000円（税込）</p>
-                <a class="p-support__button" href="<?php echo $and8_contact; ?>">保守について相談する</a>
-                <p class="p-support__note">送信時点では契約になりません</p>
-            </div>
-        </div>
-    </section>
-
     <section class="p-support__section">
         <div class="p-support__inner">
             <p class="p-support__eyebrow p-support__heading--center">Process</p>
@@ -256,8 +241,8 @@ get_header();
         <div class="p-support__inner p-support__price-layout">
             <div>
                 <p class="p-support__eyebrow">Price</p>
-                <h2 class="p-support__heading">初回と、月額</h2>
-                <p>すでに公開しているWordPressサイトが対象です。名義はお客様のままです。</p>
+                <h2 class="p-support__heading">料金</h2>
+                <p>すでに公開しているWordPressサイトが対象です。サーバーなどの名義はお客様のままです。</p>
             </div>
             <div class="p-support__panel">
                 <p class="p-support__eyebrow">月額</p>
