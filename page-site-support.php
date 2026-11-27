@@ -268,16 +268,15 @@ get_header();
                 <li>月額は前月28日に請求し、支払期限は当月末です</li>
                 <li>解約のご連絡は前月20日までにお願いします</li>
             </ul>
-            <p>ログインできないときは、初回料金を・月額料金はいただきません。探す場所を案内するだけです。</p>
-            <p>検索順位、集客、売上は約束できませんのでご了承ください。お客様のパスワードは受け取りません。入れる場合は、And 8用の管理者を1人追加していただきます。</p>
+            <p>ログインできないときは、初回料金を・月額料金はいただきません。</p>
+            <p>検索順位、集客、売上は約束できませんのでご了承ください。</p>
         </div>
     </section>
 
     <section class="p-support__section p-support__section--ink">
         <div class="p-support__inner p-support__about">
-            <h2 class="p-support__heading">私が責任を持って担当させていただきます</h2>
+            <h2 class="p-support__heading">yuiko miyano</h2>
             <div>
-                <p><strong>yuiko miyano</strong></p>
                 <p>名古屋市を拠点に、WordPressを使ったWebサイト制作・コーディングを行っています。</p>
                 <p>HTML・CSS・JavaScriptによるレスポンシブ対応、WordPressオリジナルテーマの構築、既存テーマのカスタマイズなどに対応。</p>
                 <p>作り直すことを前提にせず、現在のサイトのチェックと、毎月の情報更新を担当します。</p>
@@ -328,9 +327,9 @@ get_header();
         <div class="p-support__inner p-support__inner--narrow">
             <p class="p-support__eyebrow">Contact</p>
             <h2 class="p-support__heading">サイトのURLをお送りください。</h2>
-            <p>サイトのURLと、管理画面に入れるかどうかを送ってください。パスワードは書かないでください。ここではまだ入りません。</p>
+            <p>サイトのURLと、管理画面に入れるかどうかをご記載ください。パスワードは書かないようお願いいたします。</p>
             <a class="p-support__button" href="<?php echo $and8_contact; ?>">保守について相談する</a>
-            <p class="p-support__note">送信時点では契約になりません。両方にログインできたときに初回を請求し、入金を確認してから点検に入ります。</p>
+            <p class="p-support__note">送信時点では契約になりません。</p>
         </div>
     </section>
 </main>
