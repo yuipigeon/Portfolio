@@ -136,11 +136,13 @@
 
 .p-support__title {
   margin: 0 0 1rem;
-  font-size: clamp(2rem, 5vw, 3.2rem);
 }
 
 .p-support__title span {
   display: block;
+}
+.p-support__title strong {  
+  font-size: clamp(2rem, 5vw, 3.2rem) !important;
 }
 
 .p-support__offer {
