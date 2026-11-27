@@ -97,6 +97,7 @@
 
 .p-support__section--monthly .p-support__sprit {
   align-items: end;
+  display: flex;
 }
 
 .p-support__section--ink {
