@@ -191,7 +191,7 @@ get_header();
         </div>
     </section>
 
-    <section class="p-support__section">
+    <section class="p-support__section p-support__section-update">
         <div class="p-support__inner">
             <p class="p-support__eyebrow">Updates</p>
             <h2 class="p-support__heading">更新作業について</h2>
