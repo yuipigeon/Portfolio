@@ -3,9 +3,26 @@
  * 固定ページ用テンプレート。
  * テーマ portfolio の直下に置く。スラッグが site-support の固定ページで使われる。
  * css/p-site-support.css はテーマの css フォルダに置く。
- * CSS とフォントは functions.php から、この固定ページだけで読み込む。
  * front-page.php は変更しない。
  */
+
+add_action(
+	'wp_enqueue_scripts',
+	static function () {
+		wp_enqueue_style(
+			'and8-support-fonts',
+			'https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;700&family=Roboto:wght@500;700&display=swap',
+			array(),
+			null
+		);
+		wp_enqueue_style(
+			'and8-site-support',
+			get_theme_file_uri( 'css/p-site-support.css' ),
+			array( 'style', 'and8-support-fonts' ),
+			'1.0.0'
+		);
+	}
+);
 
 add_filter(
 	'document_title_parts',
@@ -89,7 +106,7 @@ get_header();
         </div>
     </section>
 
-    <section class="p-support__section p-support__section--white">
+    <section class="p-support__section p-support__section--facts">
         <div class="p-support__inner">
             <h2 class="p-support__heading p-support__heading--center">正しい情報、載せてありますか？</h2>
             <p class="p-support__lead p-support__lead--center">管理画面を開く時間だけが、取れない。</p>
@@ -140,7 +157,7 @@ get_header();
         </div>
     </section>
 
-    <section class="p-support__section p-support__section--ink">
+    <section class="p-support__section p-support__section--monthly">
         <div class="p-support__inner p-support__split">
             <div>
                 <p class="p-support__eyebrow">Monthly</p>
@@ -159,7 +176,7 @@ get_header();
                     <li>メールでの短いご相談</li>
                 </ul>
             </div>
-            <aside class="p-support__card p-support__card--ink">
+            <aside class="p-support__card">
                 <h3>月額に含めないこと</h3>
                 <ul class="p-support__list">
                     <li>新しいページ</li>
