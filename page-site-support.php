@@ -194,8 +194,8 @@ get_header();
     <section class="p-support__section">
         <div class="p-support__inner">
             <p class="p-support__eyebrow">Updates</p>
-            <h2 class="p-support__heading">更新は、戻せる状態を作ってから。</h2>
-            <p>テーマやプラグインは、修正によってサイトが壊れないよう更新します。</p>
+            <h2 class="p-support__heading">更新作業について</h2>
+            <p>テーマやプラグインを定期的に更新します。</p>
             <div class="p-support__columns">
                 <div class="p-support__panel">
                     <h3>月額に含む更新</h3>
